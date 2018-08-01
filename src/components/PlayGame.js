@@ -18,7 +18,7 @@ class PlayGame extends Component {
       selfPlaying: false,
       automatedMoveQueue: [],
       playSpeed: 1,
-      maxSpeed: 500,
+      maxSpeed: 10,
       timer: null
     };
   }
