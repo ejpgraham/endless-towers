@@ -69,18 +69,22 @@ class PlayGame extends Component {
 
   handleSpeedClick (e) {
     e.preventDefault();
+    this.increaseGameSpeed();
+    if (this.state.timer) {
+      clearInterval(this.state.timer);
+      this.state.timer = setInterval(this.makeMoves.bind(this), 1000 / this.state.playSpeed);
+    }
+  }
+
+  increaseGameSpeed () {
     if (this.state.playSpeed < this.state.maxSpeed) {
       this.setState((prevState) => {
         return {playSpeed: prevState.playSpeed + 1};
       });
     } else {
-      this.setState({playSpeed: 1}, () => {
-        clearInterval(this.state.timer);
-        this.setState({timer: setInterval(this.makeMoves.bind(this), 1000 / this.state.playSpeed)});
-      });
+      this.state.playSpeed = 1;
+      this.setstate({playSpeed: 1});
     }
-    clearInterval(this.state.timer);
-    this.state.timer = setInterval(this.makeMoves.bind(this), 1000 / this.state.playSpeed);
   }
 
   automateGame (discs, from, to, via) {

@@ -8,7 +8,7 @@ export default function newGameRules (newGameDifficulty, localStorage, currentSt
   } else if (localStorage) {
     difficulty = localStorage.getItem('storedDifficulty');
   } else {
-    difficulty = newGameDifficulty;
+    difficulty = 3;
   }
 
   let numberOfDiscs = (parseInt(difficulty) + 2) * 3 + 8;
