@@ -21,9 +21,9 @@ class Disc extends Component {
   shouldComponentUpdate (nextProps, nextState) {
     if (this.props.coordinates) {
       return true;
-    }
-
-    if (this.props.discColor === nextProps.discColor && this.props.position === nextProps.position) {
+    } else if (this.props.inverted !== nextProps.inverted) {
+      return true;
+    } else if (this.props.discColor === nextProps.discColor && this.props.position === nextProps.position) {
       return false;
     }
     return true;

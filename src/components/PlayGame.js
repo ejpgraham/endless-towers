@@ -3,7 +3,6 @@ import Column from './Column';
 import Cursor from './Cursor';
 import newGameRules from '../rules/initialize-game';
 import randomColor from '../assets/color-scheme';
-// import automateGame from '../rules/automate-game';
 
 class PlayGame extends Component {
   constructor (props) {
@@ -83,7 +82,7 @@ class PlayGame extends Component {
       });
     } else {
       this.state.playSpeed = 1;
-      this.setstate({playSpeed: 1});
+      this.setState({playSpeed: 1});
     }
   }
 
