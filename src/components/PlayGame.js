@@ -12,7 +12,7 @@ class PlayGame extends Component {
       columns: [Object.assign(initialColumn), [], []],
       gameHeight: Object.assign(initialColumn).length,
       discBeingHeld: false,
-      color: 'grayscale',
+      color: 'grays',
       inverted: false,
       selfPlaying: false,
       automatedMoveQueue: [],
@@ -33,10 +33,23 @@ class PlayGame extends Component {
   }
 
   handleColorClick (e) {
+    let colors = ['grays', 'reds', 'violets', 'greens', 'blues', 'rainbows'];
     e.preventDefault();
     this.setState((prevState) => {
-      return prevState.color === 'grayscale'
-        ? {color: 'rainbow'} : {color: 'grayscale'};
+      switch (prevState.color) {
+        case 'grays':
+          return {color: 'reds'};
+        case 'reds':
+          return {color: 'violets'};
+        case 'violets':
+          return {color: 'greens'};
+        case 'greens':
+          return {color: 'blues'};
+        case 'blues':
+          return {color: 'rainbows'};
+        case 'rainbows':
+          return {color: 'grays'};
+      }
     });
   }
 
@@ -145,7 +158,7 @@ class PlayGame extends Component {
           )}
         </section>
         <div className='buttons-container'>
-          <button style={{backgroundColor: this.state.color === 'grayscale' ? 'white' : randomColor(this.state.color)}}
+          <button style={{backgroundColor: this.state.color === 'grays' ? 'white' : randomColor(this.state.color)}}
             type='button' className='button toggle-color-button' onClick={this.handleColorClick.bind(this)}>COLOR</button>
           <button type='button' className={(this.state.inverted ? 'inverted-button' : 'button') + ' toggle-inversion-button'} onClick={this.handleInvertClick.bind(this)}>INVERT</button>
           <button type='button' className='button toggle-speed-button' onClick={this.handleSpeedClick.bind(this)}>Speed: {this.state.playSpeed}x</button>

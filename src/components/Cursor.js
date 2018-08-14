@@ -27,7 +27,7 @@ class Cursor extends Component {
     const coordinates = [this.state.x, this.state.y];
     const discBeingHeld = this.state.discBeingHeld;
     const discInCursor = discBeingHeld !== false ? (
-      <Disc width={discBeingHeld} coordinates={coordinates}/>
+      <Disc width={discBeingHeld} coordinates={coordinates} discColor={'reds'}/>
     ) : (
       <div></div>
     );

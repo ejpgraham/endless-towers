@@ -13,7 +13,7 @@ class Disc extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.discColor !== this.props.discColor) {
+    if (nextProps.discColor !== this.props.discColor && nextProps.discColor) {
       this.setState({color: randomColor(nextProps.discColor)})
     }
   }
@@ -33,7 +33,7 @@ class Disc extends Component {
     const inverted = this.props.inverted ? 'top' : 'bottom';
     const disc = this.props.coordinates ? (
       <div className='disc'
-        style={{backgroundColor: 'red',
+        style={{backgroundColor: this.state.color,
           width: (this.props.width + 1) * 20,
           height: 15,
           left: this.props.coordinates[0],
